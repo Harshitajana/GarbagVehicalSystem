@@ -1,13 +1,9 @@
 package com.Garbag_Vehical_System.GarbagVehicalSystem.MyControllor;
 
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.LoginEntity;
-import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.SignInEntity;
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +17,12 @@ public class Controllor {
         return service.loginSave(loginEntities);
     }
     @GetMapping("signin")
-    public String singchack(@RequestBody SignInEntity list){
+    public String singchack(@RequestBody LoginEntity list){
         return service.signdata(list);
     }
+    @PutMapping("updatepass")
+    public LoginEntity SignUpdate(@RequestBody LoginEntity signupdate){
+        return service.updatepass(signupdate);
+    }
+
 }

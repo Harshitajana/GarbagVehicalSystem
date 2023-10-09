@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Repositry  extends JpaRepository<LoginEntity, Integer>{
+public interface Repositry  extends JpaRepository<LoginEntity, String>{
 }

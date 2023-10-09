@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @Table
 public class LoginEntity {
     @Id
-    private int house_no;
+    private String email;
+    private String house_no;
     private String society_Add;
     private int mobile_no;
     private String name;
-    private String email;
     private String password;
 }
