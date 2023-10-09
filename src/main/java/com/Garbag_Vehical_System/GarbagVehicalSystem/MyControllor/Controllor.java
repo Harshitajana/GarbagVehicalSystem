@@ -24,4 +24,8 @@ public class Controllor {
     public String singchack(@RequestBody SignInEntity list){
         return service.signdata(list);
     }
+    @GetMapping("loginw")
+    public void setService(){
+
+    }
 }
