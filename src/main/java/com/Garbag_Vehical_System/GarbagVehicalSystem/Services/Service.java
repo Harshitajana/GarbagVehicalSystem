@@ -41,17 +41,10 @@ public class Service {
                 con = true;
             }
         }
-<<<<<<< HEAD
         if (con == false) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for like http://localhost:8080/updatepass");
         }
         return String.valueOf(con);
-=======
-        if (con==false){
-             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for link http://localhost:8080/updatepass");
-          }
-         return String.valueOf(con);
->>>>>>> f25d6d3619c581aa50a348669bae8ccd0b0a2671
     }
 
     public LoginEntity updatepass(LoginEntity loginEntity) {
