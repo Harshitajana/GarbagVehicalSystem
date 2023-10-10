@@ -6,14 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
     @Autowired
     private Repositry repositry;
-    public List<LoginEntity> loginSave(List<LoginEntity> loginEntities) {
-        return repositry.saveAll(loginEntities);
+    public LoginEntity loginSave(LoginEntity loginEntities) {
+        List<LoginEntity> list=repositry.findAll();
+        if (list.size()==0){
+            repositry.save(loginEntities);
+            return loginEntities;
+        }
+        for (LoginEntity entity:list){
+            if (!loginEntities.getEmail().equals(entity.getEmail())){
+                repositry.save(loginEntities);
+                return loginEntities;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"your account alredy login plase singin ");
     }
 
     public String signdata(LoginEntity list) {
@@ -30,7 +42,7 @@ public class Service {
             }
         }
         if (con==false){
-             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for like http://localhost:8080/updatepass");
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for link http://localhost:8080/updatepass");
           }
          return String.valueOf(con);
     }
@@ -40,6 +52,6 @@ public class Service {
         loginEntity1.setPassword(loginEntity.getPassword());
          repositry.save(loginEntity1);
         return loginEntity1;
-      }
+    }
 
 }
