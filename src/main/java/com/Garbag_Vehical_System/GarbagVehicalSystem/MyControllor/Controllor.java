@@ -12,17 +12,18 @@ public class Controllor {
     @Autowired
     private Service service;
 
-    @PostMapping("login")
+    @PostMapping("login")// login user
     public List<LoginEntity> le(@RequestBody List<LoginEntity> loginEntities){
         return service.loginSave(loginEntities);
     }
-    @GetMapping("signin")
+    @GetMapping("signin") // signing user
     public String singchack(@RequestBody LoginEntity list){
         return service.signdata(list);
     }
-    @PutMapping("updatepass")
+    @PutMapping("updatepass") // forget password
     public LoginEntity SignUpdate(@RequestBody LoginEntity signupdate){
         return service.updatepass(signupdate);
     }
+
 
 }

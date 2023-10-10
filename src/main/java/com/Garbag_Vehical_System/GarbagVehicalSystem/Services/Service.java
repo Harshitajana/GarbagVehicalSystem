@@ -30,16 +30,16 @@ public class Service {
             }
         }
         if (con==false){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for like http://localhost:8080/updatepass");
-        }
-        return String.valueOf(con);
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for like http://localhost:8080/updatepass");
+          }
+         return String.valueOf(con);
     }
-
 
     public LoginEntity updatepass(LoginEntity loginEntity) {
         LoginEntity loginEntity1 = repositry.findById(loginEntity.getEmail()).get();
         loginEntity1.setPassword(loginEntity.getPassword());
-        repositry.save(loginEntity1);
+         repositry.save(loginEntity1);
         return loginEntity1;
-    }
+      }
+
 }
