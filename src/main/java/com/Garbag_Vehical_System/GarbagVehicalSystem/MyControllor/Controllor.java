@@ -13,7 +13,7 @@ public class Controllor {
     private Service service;
 
     @PostMapping("login")// login user
-    public List<LoginEntity> le(@RequestBody List<LoginEntity> loginEntities){
+    public LoginEntity le(@RequestBody LoginEntity loginEntities){
         return service.loginSave(loginEntities);
     }
     @GetMapping("signin") // signing user
