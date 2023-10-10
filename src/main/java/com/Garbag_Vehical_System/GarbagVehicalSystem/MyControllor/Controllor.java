@@ -1,5 +1,6 @@
 package com.Garbag_Vehical_System.GarbagVehicalSystem.MyControllor;
 
+import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.Address;
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.LoginEntity;
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class Controllor {
     public LoginEntity SignUpdate(@RequestBody LoginEntity signupdate){
         return service.updatepass(signupdate);
     }
+//    @PutMapping("Addpincode")
+//    public LoginEntity addpin(@RequestParam String email ,int pin){
+//        return service.addpin(email,pin);
+//    }
 
+    @PostMapping("address")
+    public Address address(@RequestBody Address loginEntity){
+        return service.AddresSave(loginEntity);
+    }
 
 }

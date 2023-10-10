@@ -1,31 +1,34 @@
 package com.Garbag_Vehical_System.GarbagVehicalSystem.Services;
 
+import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.Address;
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Entity.LoginEntity;
+import com.Garbag_Vehical_System.GarbagVehicalSystem.Repositry.AddressRepositry;
 import com.Garbag_Vehical_System.GarbagVehicalSystem.Repositry.Repositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
     @Autowired
     private Repositry repositry;
+    @Autowired
+    private AddressRepositry addressRepositry ;
     public LoginEntity loginSave(LoginEntity loginEntities) {
         List<LoginEntity> list=repositry.findAll();
         if (list.size()==0){
             repositry.save(loginEntities);
             return loginEntities;
         }
-        for (LoginEntity entity:list){
-            if (!loginEntities.getEmail().equals(entity.getEmail())){
-                repositry.save(loginEntities);
-                return loginEntities;
+        for (LoginEntity existingEntity : list) {
+            if (existingEntity.getEmail().equals(loginEntities.getEmail())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Your account is already logged in. Please sign in.");
             }
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"your account alredy login plase singin ");
+        repositry.save(loginEntities);
+        return loginEntities;
     }
 
     public String signdata(LoginEntity list) {
@@ -54,4 +57,15 @@ public class Service {
         return loginEntity1;
     }
 
+    public Address AddresSave(Address loginEntity) {
+        return addressRepositry.save(loginEntity);
+    }
+
+
+//    public LoginEntity addpin(String email, int pin) {
+//        LoginEntity loginEntity=repositry.findById(email).get();
+//        loginEntity.setPincode(pin);
+//        repositry.save(loginEntity);
+//        return loginEntity;
+//    }
 }
