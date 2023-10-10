@@ -32,22 +32,29 @@ public class Service {
     }
 
     public String signdata(LoginEntity list) {
-        boolean con=false;
+        boolean con = false;
         List<LoginEntity> loginEntities = repositry.findAll();
         String s1 = list.getEmail();
         String i1 = list.getPassword();
 
-        for (LoginEntity loginEntity : loginEntities){
+        for (LoginEntity loginEntity : loginEntities) {
             String s2 = loginEntity.getEmail();
             String i2 = loginEntity.getPassword();
-            if (s1.equals(s2) && i1.equals(i2)){
-                con=true;
+            if (s1.equals(s2) && i1.equals(i2)) {
+                con = true;
             }
         }
+<<<<<<< HEAD
+        if (con == false) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for like http://localhost:8080/updatepass");
+        }
+        return String.valueOf(con);
+=======
         if (con==false){
              throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "you enter password is worg plase enter right passowrd anther to forget password click for link http://localhost:8080/updatepass");
           }
          return String.valueOf(con);
+>>>>>>> f25d6d3619c581aa50a348669bae8ccd0b0a2671
     }
 
     public LoginEntity updatepass(LoginEntity loginEntity) {
