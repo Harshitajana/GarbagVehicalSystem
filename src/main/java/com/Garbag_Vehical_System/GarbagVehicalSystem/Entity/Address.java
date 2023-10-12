@@ -13,10 +13,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
-    @Id
 //  @PrimaryKeyJoinColumn
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int addID;
+//    private int addID;
+    @Id
     private int pincode;
     private String society_name;
     private String house_no;

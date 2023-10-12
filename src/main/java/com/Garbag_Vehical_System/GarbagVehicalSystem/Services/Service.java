@@ -57,7 +57,10 @@ public class Service {
         return loginEntity1;
     }
 
-    public Address AddresSave(Address loginEntity) {
+    public Address AddresSave(Address loginEntity, String email) {
+        LoginEntity login=repositry.findByEmail(email);
+        login.setAddress(loginEntity);
+        repositry.save(login);
         return addressRepositry.save(loginEntity);
     }
 

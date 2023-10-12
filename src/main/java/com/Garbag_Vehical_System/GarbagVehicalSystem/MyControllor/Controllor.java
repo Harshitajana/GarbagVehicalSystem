@@ -31,8 +31,8 @@ public class Controllor {
 //    }
 
     @PostMapping("address")
-    public Address address(@RequestBody Address loginEntity){
-        return service.AddresSave(loginEntity);
+    public Address address(@RequestBody Address loginEntity, @RequestParam String email){
+        return service.AddresSave(loginEntity,email);
     }
 
 }

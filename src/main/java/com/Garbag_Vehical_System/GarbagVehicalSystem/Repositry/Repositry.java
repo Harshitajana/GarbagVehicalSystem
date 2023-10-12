@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface Repositry  extends JpaRepository<LoginEntity, String>{
+    LoginEntity findByEmail(String email);
 }
