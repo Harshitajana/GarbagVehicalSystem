@@ -15,7 +15,7 @@ import java.util.List;
 public class Address {
     @Id
 //  @PrimaryKeyJoinColumn
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int addID;
     private int pincode;
     private String society_name;
